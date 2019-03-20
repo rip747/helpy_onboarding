@@ -11,23 +11,19 @@ class OnboardingController < ApplicationController
   end
 
   def update_user
-    # if current_user.admin?
-      @user = User.first
-      @user.admin = true
-      @user.active = true
-      @user.role = 'admin'
-      @user.password = params[:user][:password]
-    # else
-      # @user = current_user
-    # end
+    @user = User.first
+    @user.admin = true
+    @user.active = true
+    @user.role = 'admin'
+    @user.password = params[:user][:password]
 
     @user.update(user_params)
- 
-    if @user.save      
-      sign_in(@user, bypass: true) if @user.admin?
+
+    if @user.save
+      bypass_sign_in(@user) if @user.admin?
       respond_to do |format|
         format.js {
-            render js: "Helpy.showPanel(3);$('#edit_user_1').enableClientSideValidations();"
+          render js: "Helpy.showPanel(3);$('#edit_user_1').enableClientSideValidations();"
         }
       end
     else
