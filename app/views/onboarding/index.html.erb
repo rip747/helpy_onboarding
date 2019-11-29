@@ -96,7 +96,7 @@
   <div class="text-left settings-section">
   <%= bootstrap_form_tag url: onboard_settings_path, method: 'patch', remote: true do |f| %>
     <%= f.text_field 'settings.site_name', label: t('site_name', default: "Site Name"), placeholder: t(:site_name_placeholder, default: 'Typically your product name and support.') %>
-    <%= f.text_field 'settings.site_url', label: t('site_url', default: "Site URL"), placeholder: t(:site_url_placeholder, default: 'The URL of your Helpy (support.yourdomain.com)') %>
+    <%= f.text_field 'settings.site_url', label: t('site_url', default: "Site URL"), placeholder: t(:site_url_placeholder, default: 'The URL of your Helpy (https://support.yourdomain.com)', type: 'url') %>
     <%= f.text_field 'settings.parent_site', label: t('parent_site', default: "Parent Site"), placeholder: t(:parent_site_placeholder, default: 'This is your main website. Helpy will link back to it.') %>
     <%= f.text_field 'settings.parent_company', label: t('parent_company', default: "Parent Company"), placeholder: t(:parent_company_placeholder, default: 'This is your main company.') %>
 
